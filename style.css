@@ -199,16 +199,24 @@ u {
   font-size: 22px;
 }
 
+.stretch {
+  grid-column: 1/-1;
+  padding-bottom: 10px;
+}
+
 .tab-wrap {
   display: -ms-grid;
   display: grid;
   position: relative;
-  -ms-grid-columns: 1fr 1fr;
-      grid-template-columns: 1fr 1fr;
+  -ms-grid-columns: 1.5fr 1fr;
+      grid-template-columns: 1.5fr 1fr;
   width: 90%;
   height: auto;
   margin: 0 auto;
   padding: 50px 0px;
+  display: grid;
+  -ms-grid-rows: 1fr;
+      grid-template-rows: 1fr;
 }
 
 @media only screen and (max-width: 1024px) {
@@ -220,30 +228,25 @@ u {
   }
 }
 
-.tab-wrap .tab-left {
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-rows: 1fr;
-      grid-template-rows: 1fr;
-}
-
-.tab-wrap .tab-left .tab-left2 {
+.tab-wrap .tab-left2 {
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: (1fr)[2];
       grid-template-columns: repeat(2, 1fr);
+  grid-gap: 10px;
 }
 
 @media only screen and (min-width: 768px) and (max-width: 1024px) {
-  .tab-wrap .tab-left .tab-left2 {
+  .tab-wrap .tab-left2 {
     display: -ms-grid;
     display: grid;
+    grid-gap: 10px;
     padding: 20px;
   }
 }
 
 @media only screen and (max-width: 767px) {
-  .tab-wrap .tab-left .tab-left2 {
+  .tab-wrap .tab-left2 {
     display: -ms-grid;
     display: grid;
     -ms-grid-columns: 1fr;
@@ -256,13 +259,75 @@ u {
 .bx {
   display: -ms-grid;
   display: grid;
-  width: 300px;
-  max-height: 200px;
-  -ms-grid-rows: 40px 1fr;
-      grid-template-rows: 40px 1fr;
+  -ms-flex-line-pack: start;
+      align-content: start;
+  height: auto;
   -webkit-box-shadow: 0 10px 20px rgba(56, 52, 52, 0.17);
           box-shadow: 0 10px 20px rgba(56, 52, 52, 0.17);
-  text-align: center;
+  border-radius: 5px;
+  -ms-grid-columns: 1em 1fr 2em;
+      grid-template-columns: 1em 1fr 2em;
+  background-color: white;
+  margin-right: 2em;
+}
+
+.bx div {
+  -ms-grid-column: 2;
+  grid-column: 2;
+}
+
+.bx div:nth-child(5) {
+  padding: 0;
+}
+
+.bx span {
+  background: #f2f2f2;
+  padding: 0.25em 1.125em;
+  margin: 0.25em;
+  color: #555;
+  display: inline-block;
+  border: 0.25px dashed greenyellow;
+  font-family: Source Sans Pro;
+}
+
+.qualities span {
+  background: #f2f2f2;
+  padding: 0.35em;
+  margin: 0.25em;
+  color: #555;
+  display: inline-block;
+  border: 0.25px dashed #cc0;
+  font-family: Source Sans Pro;
+}
+
+.mini-title,
+.subtitle {
+  color: #797979;
+  text-transform: uppercase;
+}
+
+.subtitle {
+  padding: 0;
+  margin: 0;
+  font-size: 1rem;
+}
+
+.mini-title {
+  justify-self: flex-start;
+  font-size: 20px;
+  font-weight: 700;
+  font-family: "Merriweather", sans-serif;
+  padding-top: 1em;
+}
+
+.dimensions {
+  padding: 1em 0 2em;
+}
+
+.text {
+  padding-top: 01em;
+  color: #333;
+  font-family: Noto Sans;
 }
 
 .tab-right {
@@ -273,6 +338,8 @@ u {
       grid-template-columns: repeat(2, 1fr);
   -ms-grid-column-align: center;
       justify-self: center;
+  -ms-flex-line-pack: center;
+      align-content: center;
 }
 
 .circle {
@@ -280,6 +347,13 @@ u {
   height: 180px;
   border-radius: 50%;
   background-color: grey;
+}
+
+@media only screen and (max-width: 767px) {
+  .circle {
+    width: 120px;
+    height: 120px;
+  }
 }
 
 .one {
@@ -333,29 +407,6 @@ u {
 .li {
   padding: 5px;
   color: #000080;
-}
-
-.mini-title {
-  -ms-flex-item-align: center;
-      -ms-grid-row-align: center;
-      align-self: center;
-  font-size: 18px;
-  color: #444444;
-  font-weight: 700;
-  font-family: "Merriweather", sans-serif;
-}
-
-.mini-heading {
-  font-family: "Noto Sans", sans-serif;
-  font-size: 32px;
-  font-weight: 500;
-}
-
-.sub-heading {
-  font-size: 24px;
-  -ms-flex-item-align: end;
-      align-self: flex-end;
-  font-family: "Merriweather", sans-serif;
 }
 
 .banner-wrap {
@@ -531,5 +582,46 @@ h3,
 
 iframe {
   padding-top: 2em;
+}
+
+.footer-text {
+  font-size: 14px;
+  text-align: center;
+}
+
+.sideheader1 {
+  font-size: 24px;
+  font-family: Noto Sans;
+  font-weight: 400;
+}
+
+.sideheader2 {
+  font-size: 32px;
+  font-family: Noto Sans;
+  font-weight: 500;
+}
+
+.sideheader3 {
+  font-size: 14px;
+  font-family: Noto Sans;
+  color: #333333;
+}
+
+@media only screen and (max-width: 767px) {
+  .sideheader1 {
+    font-size: 18px;
+    font-family: Noto Sans;
+    font-weight: 400;
+  }
+  .sideheader2 {
+    font-size: 26px;
+    font-family: Noto Sans;
+    font-weight: 500;
+  }
+  .sideheader3 {
+    font-size: 13px;
+    font-family: Noto Sans;
+    color: #333333;
+  }
 }
 /*# sourceMappingURL=style.css.map */
